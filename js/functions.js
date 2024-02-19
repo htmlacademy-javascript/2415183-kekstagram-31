@@ -19,12 +19,10 @@ const findNumbers = (string) => {
   let number = '';
   string = string.toString().replaceAll(' ', '');
   for (let i = 0; i < string.length; i++) {
-    if((Number(string[i]))) {
+    if(Number(string[i])) {
       number += string[i].trim();
     }
   }
   return parseInt(number, 10);
 };
-findNumbers (' a g e n t.00 7 ');
-console.log(findNumbers(' a g e n t.00 7 '))
-
+findNumbers ('');
