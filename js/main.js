@@ -83,8 +83,6 @@ const GetUniqueNumber = (min, max) =>{
     array.push(number);
     return number;
   };
-  // let number = 0;
-  // return number++;
 };
 
 const photoId = GetUniqueNumber (1, POST_COUNT);
@@ -114,8 +112,3 @@ const createPost = () =>({
 
 //функция создания нескольких постов
 const multiplePosts = Array.from({length:POST_COUNT}, createPost);
-
-
-console.log (multiplePosts);
-
-
