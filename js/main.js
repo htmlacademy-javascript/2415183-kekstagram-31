@@ -1,4 +1,5 @@
 const POST_COUNT = 25; //количество итерраций
+const POST_URL_COUNT = 25; //количество фотографий
 const AVATAR_LOWEST = 1; //диапазон количества аватарок
 const AVATAR_HIGHEST = 6;
 const LIKES_LOWEST = 15; //диапазон количества лайков
@@ -69,17 +70,30 @@ const getRandomInteger = (a, b) => {
 };
 
 //функция получения уникального номера
-const GetUniqueNumber = () => {
-  let number = 0;
-  return number++;
+const GetUniqueNumber = (min, max) =>{
+  const array = [];
+  return function () {
+    let number = getRandomInteger(min, max);
+    if (array.length >= max - min + 1) {
+      return null;
+    }
+    while (array.includes(number)) {
+      number = getRandomInteger(min, max);
+    }
+    array.push(number);
+    return number;
+  };
+  // let number = 0;
+  // return number++;
 };
 
-const photoId = GetUniqueNumber ();
-const urlNumber = GetUniqueNumber ();
-const commentId = GetUniqueNumber ();
+const photoId = GetUniqueNumber (1, POST_COUNT);
+const urlNumber = GetUniqueNumber (1, POST_URL_COUNT);
+const commentId = GetUniqueNumber (1, COMMENTS_HIGHEST);
 
 //функция получения случайного элемента массива
 const getRandomElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
+
 
 //функция создания комментария
 const getComment = () => ({
@@ -91,13 +105,17 @@ const getComment = () => ({
 
 //функция создания поста
 const createPost = () =>({
-  id: photoId,
-  url: `photos/${urlNumber}.jpg`,
+  id: photoId(),
+  url: `photos/${urlNumber()}.jpg`,
   description: getRandomElement(DESCRIPTIONS),
   likes: getRandomInteger(LIKES_LOWEST, LIKES_HIGHEST),
-  comments: Array.from({length: getRandomInteger(COMMENTS_LOWEST, COMMENTS_HIGHEST), getComment})
+  comments: Array.from({length: getRandomInteger(COMMENTS_LOWEST, COMMENTS_HIGHEST)}, getComment)
 });
 
+//функция создания нескольких постов
 const multiplePosts = Array.from({length:POST_COUNT}, createPost);
 
-multiplePosts();
+
+console.log (multiplePosts);
+
+
