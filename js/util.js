@@ -22,4 +22,4 @@ const getUniqueNumber = (min, max) =>{
   };
 };
 
-export{getRandomInteger, getUniqueNumber};
+export { getRandomInteger, getUniqueNumber };

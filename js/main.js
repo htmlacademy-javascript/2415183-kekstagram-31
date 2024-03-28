@@ -1,2 +1,4 @@
-import { multiplePosts } from './data';
-multiplePosts();
+// import { multiplePosts } from './data.js';
+// multiplePosts;
+import {otherUsersPictures} from './miniatures.js';
+otherUsersPictures();
