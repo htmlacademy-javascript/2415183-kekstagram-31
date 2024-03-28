@@ -1,4 +1,4 @@
-import { getRandomInteger, getUniqueNumber } from './util';
+import { getRandomInteger, getUniqueNumber } from './util.js';
 
 const POST_COUNT = 25; //количество итерраций
 const POST_URL_COUNT = 25; //количество фотографий
@@ -89,5 +89,4 @@ const createPost = () =>({
 
 //функция создания нескольких постов
 const multiplePosts = Array.from({length:POST_COUNT}, createPost);
-
 export {multiplePosts};
