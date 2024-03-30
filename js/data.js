@@ -1,5 +1,6 @@
 import { getRandomInteger, getUniqueNumber } from './util.js';
 
+
 const POST_COUNT = 25; //количество итерраций
 const POST_URL_COUNT = 25; //количество фотографий
 const AVATAR_LOWEST = 1; //диапазон количества аватарок
