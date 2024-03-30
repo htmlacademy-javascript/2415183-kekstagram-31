@@ -1,5 +1,6 @@
 import { multiplePosts } from './data.js';
 
+let count = 0;
 const pictures = document.querySelector('.pictures');
 const otherUsersTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
@@ -17,6 +18,7 @@ otherUserPost.forEach(({url, descrioption, likes, comments}) => {
   text.alt = descrioption;
   numOfComments.textContent = comments.length;
   numOfLikes.textContent = likes;
+  pictureElement.setAttribute('data-id', count++);
   otherUserFragment.append(pictureElement);
 });
 

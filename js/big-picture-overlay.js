@@ -1,7 +1,7 @@
 import {pictures, otherUserPost} from './miniatures.js';
 import {isEscapeKey} from './util.js';
 
-const bodyElement = document.querrySelector('body');
+const bodyElement = document.querySelector('body');
 const preview = document.querySelector('.big-picture');
 const previewCLose = preview.querySelector('.big-picture__cancel');
 const previewImage = preview.querySelector('.big-picture__img').querySelector('img');
@@ -22,13 +22,13 @@ const onDocumentKeydown = (evt) => {
 };
 
 const openPreview = () => {
-  preview.classList.remove('.hidden');
+  preview.classList.remove('hidden');
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
 const closePreview = () => {
-  preview.classList.add('.hidden');
-  document.addEventListener('keydown', onDocumentKeydown);
+  preview.classList.add('hidden');
+  document.removeEventListener('keydown', onDocumentKeydown);
 };
 
 const createComment = (comment) => {
@@ -102,3 +102,4 @@ pictures.addEventListener('click', (evt) => {
 previewCLose.addEventListener('click', () => {
   closePreview();
 });
+
