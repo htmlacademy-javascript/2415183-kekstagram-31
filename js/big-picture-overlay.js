@@ -1,8 +1,10 @@
 import {pictures, otherUserPost} from './miniatures.js';
-import {isEscapeKey} from './util.js';
+import {isEscapeKey, openPopup, closePopup} from './util.js';
 
 const bodyElement = document.querySelector('body');
+const overlay = document.querySelector('.overlay');
 const preview = document.querySelector('.big-picture');
+const popup = preview.querySelector('.big-picture__preview');
 const previewCLose = preview.querySelector('.big-picture__cancel');
 const previewImage = preview.querySelector('.big-picture__img').querySelector('img');
 const previewLikes = preview.querySelector('.likes-count');
@@ -19,16 +21,6 @@ const onDocumentKeydown = (evt) => {
     evt.preventDefault();
     preview.classList.add('hidden');
   }
-};
-
-const openPreview = () => {
-  preview.classList.remove('hidden');
-  document.addEventListener('keydown', onDocumentKeydown);
-};
-
-const closePreview = () => {
-  preview.classList.add('hidden');
-  document.removeEventListener('keydown', onDocumentKeydown);
 };
 
 const createComment = (comment) => {
@@ -77,6 +69,13 @@ pictures.addEventListener('click', (evt) => {
       limit += maxComments;
       createRandom (comments, index, limit);
     };
+
+    const modalClose = () => {
+      closePopup(preview, onDocumentKeydown);
+      bodyElement.classList.remove('modal-open');
+      loadCommentsButton.removeEventListener('click', onClickLoadButton);
+    };
+
     if (+(evt.target.closest('.picture').dataset.id) === id) {
       previewImage.src = url;
       previewLikes.textContent = likes;
@@ -85,7 +84,8 @@ pictures.addEventListener('click', (evt) => {
       bodyElement.classList.add('modal-open');
       previewCommentsBlock.innerHTML = '';
       createRandom (comments, index, limit);
-      openPreview();
+      openPopup(preview, onDocumentKeydown);
+
       if (comments.length >= maxComments){
         loadCommentsButton.addEventListener('click', () => {
           loadCommentsButton.classList.remove('hidden');
@@ -96,10 +96,13 @@ pictures.addEventListener('click', (evt) => {
         loadCommentsButton.classList.add('hidden');
       }
     }
+    previewCLose.addEventListener('click', modalClose);
+    overlay.addEventListener('click', modalClose);
   });
 });
 
-previewCLose.addEventListener('click', () => {
-  closePreview();
+popup.addEventListener('click', (evt) => {
+  evt.stopPropagation();
 });
+
 
