@@ -7,6 +7,7 @@ const otherUsersTemplate = document.querySelector('#picture').content.querySelec
 const photoData = multiplePosts;
 const otherUserFragment = document.createDocumentFragment();
 
+// функция создания миниатюр
 photoData.forEach(({url, descrioption, likes, comments}) => {
   const pictureElement = otherUsersTemplate.cloneNode(true);
   const image = pictureElement.querySelector('.picture__img');
