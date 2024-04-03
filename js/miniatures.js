@@ -4,10 +4,10 @@ let count = 0;
 const pictures = document.querySelector('.pictures');
 const otherUsersTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const otherUserPost = multiplePosts;
+const photoData = multiplePosts;
 const otherUserFragment = document.createDocumentFragment();
 
-otherUserPost.forEach(({url, descrioption, likes, comments}) => {
+photoData.forEach(({url, descrioption, likes, comments}) => {
   const pictureElement = otherUsersTemplate.cloneNode(true);
   const image = pictureElement.querySelector('.picture__img');
   const text = pictureElement.querySelector('.picture__info');
@@ -24,4 +24,4 @@ otherUserPost.forEach(({url, descrioption, likes, comments}) => {
 
 pictures.append(otherUserFragment);
 
-export {pictures, otherUserPost};
+export {pictures, photoData};
