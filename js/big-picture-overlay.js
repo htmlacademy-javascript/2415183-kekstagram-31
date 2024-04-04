@@ -3,7 +3,7 @@ import {isEscapeKey} from './util.js';
 
 
 const body = document.querySelector('body');
-const popup = document.querySelector('.big-picture');
+const popup = document.querySelector('.big-picture__preview');
 const image = popup.querySelector('.big-picture__img');
 const likesCount = popup.querySelector('.likes-count');
 const commentShownCount = popup.querySelector('.social__comment-shown-count');
@@ -70,6 +70,7 @@ pictures.addEventListener('click', (evt) => {
   let index = 0;
   let limit = 4;
   const createSome = createComments();
+
 
   // перебор массива объектов с данными
   photoData.forEach(({ id, url, likes, description, comments }) => {

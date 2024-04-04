@@ -90,6 +90,6 @@ const createPost = () =>({
   comments: Array.from({length: getRandomInteger(COMMENTS_LOWEST, COMMENTS_HIGHEST)}, getComment)
 });
 
-//функция создания нескольких постов
-const multiplePosts = Array.from({length:POST_COUNT}, createPost);
+//массив нескольких постов
+const multiplePosts = () => Array.from({length:POST_COUNT}, createPost);
 export {multiplePosts, createPost};
