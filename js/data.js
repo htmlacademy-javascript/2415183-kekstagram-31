@@ -1,6 +1,10 @@
 import { getRandomInteger, getUniqueNumber } from './util.js';
 
+let id = 0;
+
 const POST_COUNT = 25; //количество итерраций
+// const PHOTO_ID_LOWEST = 1; //диапазон ID картинок
+// const PHOTO_ID_HIGHEST = 25;
 const POST_URL_COUNT = 25; //количество фотографий
 const AVATAR_LOWEST = 1; //диапазон количества аватарок
 const AVATAR_HIGHEST = 6;
@@ -63,7 +67,7 @@ const DESCRIPTIONS = [
   'Как говорил мой дед, «Я твой дед».'
 ];
 
-const photoId = getUniqueNumber (1, POST_COUNT);
+// const photoId = getUniqueNumber (1, PHOTO_ID_HIGHEST);
 const urlNumber = getUniqueNumber (1, POST_URL_COUNT);
 const commentId = getUniqueNumber (1, COMMENTS_HIGHEST);
 
@@ -80,13 +84,13 @@ const getComment = () => ({
 
 //функция создания поста
 const createPost = () =>({
-  id: photoId(),
+  id: id++,
   url: `photos/${urlNumber()}.jpg`,
   description: getRandomElement(DESCRIPTIONS),
   likes: getRandomInteger(LIKES_LOWEST, LIKES_HIGHEST),
   comments: Array.from({length: getRandomInteger(COMMENTS_LOWEST, COMMENTS_HIGHEST)}, getComment)
 });
 
-//функция создания нескольких постов
-const multiplePosts = Array.from({length:POST_COUNT}, createPost);
-export {multiplePosts};
+//массив нескольких постов
+const multiplePosts = () => Array.from({length:POST_COUNT}, createPost);
+export {multiplePosts, createPost};

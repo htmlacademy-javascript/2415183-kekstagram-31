@@ -22,4 +22,17 @@ const getUniqueNumber = (min, max) =>{
   };
 };
 
-export { getRandomInteger, getUniqueNumber };
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
+
+const openPopup = (popup, onDocumentKeydown) => {
+  popup.classList.remove('hidden');
+  document.addEventListener('keydown', onDocumentKeydown);
+};
+
+const closePopup = (popup, onDocumentKeydown) => {
+  popup.classList.add('hidden');
+  document.removeEventListener('keydown', onDocumentKeydown);
+};
+
+export { getRandomInteger, getUniqueNumber, isEscapeKey, isEnterKey, openPopup, closePopup };
