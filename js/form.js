@@ -32,3 +32,27 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
+//открытие и закрытие модального окна
+uploadButton.addEventListener('change', () =>{
+  openPopup(popup, onDocumentKeydown);
+  body.classList.add('modal-open');
+});
+
+uploadButtonClose.addEventListener('change', () =>{
+  closePopupPopup(popup, onDocumentKeydown);
+  body.classList.remove('modal-open');
+});
+
+//функция валидации хэштега
+const hashtagValidation = (array) => {
+  array = hashtag.value.trim().split(' ');
+  if (hashtag.value === '') {
+    return true;
+  }
+  for (let i = 0; i < array.length; i++){
+    if (!regex.test(array[i])) {
+      return false;
+    }
+  }
+  return true;
+};
