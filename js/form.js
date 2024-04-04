@@ -44,7 +44,7 @@ uploadButtonClose.addEventListener('change', () =>{
 });
 
 //функция валидации хэштега
-const hashtagValidation = (array) => {
+const validateHashtag = (array) => {
   array = hashtag.value.trim().split(' ');
   if (hashtag.value === '') {
     return true;
@@ -56,3 +56,16 @@ const hashtagValidation = (array) => {
   }
   return true;
 };
+
+//функция проверки количества хэштэгов
+const validateHashtagAmount = () => hashtag.value.trim().split(' ').length <= HASHTAG_LIMIT;
+
+//функция проверки наличия одинаковых хэштэгов
+const validateHashtagTwin = (array) => {
+  const hashtagArray = array.toLowerCase().trim().split(' ');
+  const uniqueHashtags = [...new Set(hashtagArray)];
+  return hashtagArray.length === uniqueHashtags.length;
+};
+
+// Функция проверки количества символов в комментарии
+const validateLimitOfComment = () => textComment.value.length <= COMMENT_MAX_LENGTH;
