@@ -14,6 +14,8 @@ photoData.forEach(({url, description, likes, comments}) => {
   const text = pictureElement.querySelector('.picture__info');
   const numOfComments = pictureElement.querySelector('.picture__comments');
   const numOfLikes = pictureElement.querySelector('.picture__likes');
+  // const id = pictureElement.querySelector('data-id');
+  // const count = getNumber(image.src) - 1;
   pictures.appendChild(pictureElement);
   image.src = url;
   text.alt = description;

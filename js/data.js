@@ -1,5 +1,6 @@
 import { getRandomInteger, getUniqueNumber } from './util.js';
 
+let id = 0;
 
 const POST_COUNT = 25; //количество итерраций
 // const PHOTO_ID_LOWEST = 1; //диапазон ID картинок
@@ -83,7 +84,7 @@ const getComment = () => ({
 
 //функция создания поста
 const createPost = () =>({
-  // id: photoId(),
+  id: id++,
   url: `photos/${urlNumber()}.jpg`,
   description: getRandomElement(DESCRIPTIONS),
   likes: getRandomInteger(LIKES_LOWEST, LIKES_HIGHEST),

@@ -3,7 +3,7 @@ import {isEscapeKey} from './util.js';
 
 
 const body = document.querySelector('body');
-const popup = document.querySelector('.big-picture__preview');
+const popup = document.querySelector('.big-picture');
 const image = popup.querySelector('.big-picture__img');
 const likesCount = popup.querySelector('.likes-count');
 const commentShownCount = popup.querySelector('.social__comment-shown-count');
@@ -13,6 +13,7 @@ const socialComments = popup.querySelector('.social__comments');
 const closeButton = popup.querySelector('.big-picture__cancel');
 const loadMoreButton = popup.querySelector('.comments-loader');
 const pictureDataFragment = document.createDocumentFragment();
+// const LIMIT_OF_COMMENT = 5;
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -65,12 +66,12 @@ const createComments = () => {
   };
 };
 
+
 // событие открытия экрана
 pictures.addEventListener('click', (evt) => {
   let index = 0;
   let limit = 4;
   const createSome = createComments();
-
 
   // перебор массива объектов с данными
   photoData.forEach(({ id, url, likes, description, comments }) => {
@@ -92,9 +93,9 @@ pictures.addEventListener('click', (evt) => {
       }
     }
   });
+});
 
-  // событие закрытия окна
-  closeButton.addEventListener('click', () => {
-    closePopup();
-  });
+// событие закрытия окна
+closeButton.addEventListener('click', () => {
+  closePopup();
 });
