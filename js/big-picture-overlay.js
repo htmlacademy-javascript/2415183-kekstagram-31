@@ -92,8 +92,6 @@ pictures.addEventListener('click', (evt) => {
       } else {
         loadMoreButton.classList.add('hidden');
       }
-      // console.log(evt.target.closest('.picture').dataset.id);
-      // console.log(id);
     }
     // событие закрытия окна
     closeButton.addEventListener('click', modalClose);
