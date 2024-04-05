@@ -7,10 +7,12 @@ const scaleInputValue = document.querySelector('.scale__control--value');
 const image = document.querySelector('.img-upload__preview');
 let number = parseInt(scaleInputValue.value, 10);
 
+//функция изменения стиля
 const changeRange = () => {
   image.style.transform = `scale(${number / 100})`;
 };
 
+//кнопки  уменьшения и увеличения масштаба
 scaleSmallerButton.addEventListener('click', () => {
   if (number === MIN_LIMIT) {
     scaleSmallerButton.disabled = true;
