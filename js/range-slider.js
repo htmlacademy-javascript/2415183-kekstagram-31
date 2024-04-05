@@ -12,3 +12,31 @@ const MARVIN_MAX = 100;
 const PHOBOS_MAX = 3;
 const HEAT_MAX = 3;
 
+//Создание слайдера
+noUiSlider.create(sliderElement, {
+  range: {
+    min: 0,
+    max: 1,
+  },
+  start: 0,
+  step: 0.1,
+});
+
+// Функция, возвращающая значение для фильтра
+const addEffect = (value, index) => {
+  switch (index) {
+    case 1:
+      return `grayscale(${value})`;
+    case 2:
+      return `sepia(${value})`;
+    case 3:
+      return `invert(${value}%)`;
+    case 4:
+      return `blur(${value}px)`;
+    case 5:
+      return `brightness(${value})`;
+  }
+};
+
+
+
