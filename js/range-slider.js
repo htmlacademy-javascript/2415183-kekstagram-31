@@ -22,7 +22,7 @@ noUiSlider.create(sliderElement, {
   step: 0.1,
 });
 
-// Функция, возвращающая значение для фильтра
+//Функция, возвращающая значение для фильтра
 const addEffect = (value, index) => {
   switch (index) {
     case 1:
@@ -36,6 +36,14 @@ const addEffect = (value, index) => {
     case 5:
       return `brightness(${value})`;
   }
+};
+
+// Функция, задающая значение интенсивности эффекта при изменении
+const updateSlider = (index) => {
+  sliderElement.noUiSlider.on('update', () => {
+    inputValue.value = sliderElement.noUiSlider.get();
+    image.style.filter = addEffect(inputValue.value, index);
+  });
 };
 
 
