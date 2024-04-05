@@ -93,4 +93,4 @@ const createPost = () =>({
 
 //массив нескольких постов
 const multiplePosts = () => Array.from({length:POST_COUNT}, createPost);
-export {multiplePosts, createPost};
+export {multiplePosts};

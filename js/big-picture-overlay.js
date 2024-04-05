@@ -24,16 +24,6 @@ const onDocumentKeydown = (evt) => {
   }
 };
 
-// const openPopup = () => {
-//   popup.classList.remove('hidden');
-//   document.addEventListener('keydown', onDocumentKeydown);
-// };
-
-// const closePopup = () => {
-//   popup.classList.add('hidden');
-//   document.removeEventListener('keydown', onDocumentKeydown);
-// };
-
 // функция создания комментария
 const createElement = (comment) => {
   const element = document.createElement('li');
@@ -102,6 +92,8 @@ pictures.addEventListener('click', (evt) => {
       } else {
         loadMoreButton.classList.add('hidden');
       }
+      // console.log(evt.target.closest('.picture').dataset.id);
+      // console.log(id);
     }
     // событие закрытия окна
     closeButton.addEventListener('click', modalClose);

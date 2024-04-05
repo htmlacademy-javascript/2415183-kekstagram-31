@@ -8,14 +8,12 @@ const photoData = multiplePosts();
 const otherUserFragment = document.createDocumentFragment();
 
 // цикл создания миниатюр
-photoData.forEach(({url, description, likes, comments}) => {
+photoData.forEach(({ url, description, likes, comments}) => {
   const pictureElement = otherUsersTemplate.cloneNode(true);
   const image = pictureElement.querySelector('.picture__img');
   const text = pictureElement.querySelector('.picture__info');
   const numOfComments = pictureElement.querySelector('.picture__comments');
   const numOfLikes = pictureElement.querySelector('.picture__likes');
-  // const id = pictureElement.querySelector('data-id');
-  // const count = getNumber(image.src) - 1;
   pictures.appendChild(pictureElement);
   image.src = url;
   text.alt = description;
