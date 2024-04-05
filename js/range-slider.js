@@ -46,5 +46,45 @@ const updateSlider = (index) => {
   });
 };
 
+// Функция для изменения настроек слайдера
+const changeSliderOptions = (min, max, step) => {
+  sliderElement.noUiSlider.updateOptions({
+    range: {
+      min: min,
+      max: max
+    },
+    start: 0,
+    step: step
+  });
+};
 
+for (let i = 0; i < items.length; i++) {
+  items[i].addEventListener('click', () => {
+    inputValue.value = 0;
+    sliderContainer.classList.remove('hidden');
+    if (i === 0) {
+      sliderContainer.classList.add('hidden');
+      image.style.filter = '';
+    } else {
+      switch (i) {
+        case 1:
+          changeSliderOptions(MIN, MAX, STEP);
+          break;
+        case 2:
+          changeSliderOptions(MIN, MAX, STEP);
+          break;
+        case 3:
+          changeSliderOptions(MIN, MARVIN_MAX, MARVIN_STEP);
+          break;
+        case 4:
+          changeSliderOptions(MIN, PHOBOS_MAX, STEP);
+          break;
+        case 5:
+          changeSliderOptions(HEAT_MIN, HEAT_MAX, STEP);
+          break;
+      }
+      updateSlider(i);
+    }
+  });
+}
 
